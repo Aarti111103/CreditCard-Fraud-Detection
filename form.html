@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #predictionForm {
+            display: inline-block;
+            text-align: left;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Credit Card Fraud</h2>
+    <form id="predictionForm" method="post" action="/predict">
+    <label for="Time">Time:</label>
+    <input type="text" id="Time" name="Time"><br><br>
+
+    <label for="V1">V1:</label>
+    <input type="text" id="V1" name="V1"><br><br>
+
+    <label for="V2">V2:</label>
+    <input type="text" id="V2" name="V2"><br><br>
+
+    <label for="V3">V3:</label>
+    <input type="text" id="V3" name="V3"><br><br>
+
+    <label for="V4">V4:</label>
+    <input type="text" id="V4" name="V4"><br><br>
+
+    <label for="V5">V5:</label>
+    <input type="text" id="V5" name="V5"><br><br>
+
+    <label for="V6">V6:</label>
+    <input type="text" id="V6" name="V6"><br><br>
+
+    <label for="V7">V7:</label>
+    <input type="text" id="V7" name="V7"><br><br>
+
+    <label for="V8">V8:</label>
+    <input type="text" id="V8" name="V8"><br><br>
+
+    <label for="V9">V9:</label>
+    <input type="text" id="V9" name="V9"><br><br>
+
+    <label for="V10">V10:</label>
+    <input type="text" id="V10" name="V10"><br><br>
+
+    <label for="V11">V11:</label>
+    <input type="text" id="V11" name="V11"><br><br>
+
+    <label for="V12">V12:</label>
+    <input type="text" id="V12" name="V12"><br><br>
+
+    <label for="V13">V13:</label>
+    <input type="text" id="V13" name="V13"><br><br>
+
+    <label for="V14">V14:</label>
+    <input type="text" id="V14" name="V14"><br><br>
+
+    <label for="V15">V15:</label>
+    <input type="text" id="V15" name="V15"><br><br>
+
+    <label for="V16">V16:</label>
+    <input type="text" id="V16" name="V16"><br><br>
+
+    <label for="V17">V17:</label>
+    <input type="text" id="V17" name="V17"><br><br>
+
+    <label for="V18">V18:</label>
+    <input type="text" id="V18" name="V18"><br><br>
+
+    <label for="V19">V19:</label>
+    <input type="text" id="V19" name="V19"><br><br>
+
+    <label for="V20">V20:</label>
+    <input type="text" id="V20" name="V20"><br><br>
+
+    <label for="V21">V21:</label>
+    <input type="text" id="V21" name="V21"><br><br>
+
+    <label for="V22">V22:</label>
+    <input type="text" id="V22" name="V22"><br><br>
+
+    <label for="V23">V23:</label>
+    <input type="text" id="V23" name="V23"><br><br>
+
+    <label for="V24">V24:</label>
+    <input type="text" id="V24" name="V24"><br><br>
+
+    <label for="V25">V25:</label>
+    <input type="text" id="V25" name="V25"><br><br>
+
+    <label for="V26">V26:</label>
+    <input type="text" id="V26" name="V26"><br><br>
+
+    <label for="V27">V27:</label>
+    <input type="text" id="V27" name="V27"><br><br>
+
+    <label for="V28">V28:</label>
+    <input type="text" id="V28" name="V28"><br><br>
+
+    <label for="Amount">Amount:</label>
+    <input type="text" id="Amount" name="Amount"><br><br>
+
+    <button type="submit">Predict</button>
+</form>
+
+
+    <p id="predictionResult"></p>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwxas0Y5yZw3iADniDawkPY1aMuMKn0hHsQQ&s" alt="Credit Card Fraud Image">
+
+    <script>
+        function predictFraud() {
+            var xhr = new XMLHttpRequest();
+            var url = "/predict";
+            var data = new FormData(document.getElementById("predictionForm")); // Changed to FormData
+
+            xhr.open("POST", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById("predictionResult").innerHTML = "Fraud Prediction: " + response.prediction;
+                }
+            };
+            xhr.send(data);
+        }
+    </script>
+</body>
+</html>
